@@ -1,0 +1,11 @@
+{
+  "name": "ch.philippewechsler.semaphore",
+  "version": "1.0.0",
+  "main": "app.js",
+  "devDependencies": {
+    "homey": "^2.9.3"
+  },
+  "dependencies": {
+    "async-lock": "^1.2.6"
+  }
+}
