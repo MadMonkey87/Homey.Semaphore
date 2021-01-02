@@ -56,7 +56,7 @@ class SemaphoreApp extends Homey.App {
       .register()
       .registerRunListener(async (args, state) => {
         try {
-          return await this.WaitAndLock(10, 100, this.log, this.mutex);
+          return await this.WaitAndLock(60, 50, this.log, this.mutex);
         } catch (error) {
           this.log('error while locking', error);
           return Promise.reject(error);
