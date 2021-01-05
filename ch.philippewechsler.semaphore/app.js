@@ -17,7 +17,7 @@ class SemaphoreApp extends Homey.App {
             global.Unlock(log, mutex);
             log('forced unlock');
           }
-        }, 3000);
+        }, 5000);
         return true;
       }
       else {
@@ -65,7 +65,7 @@ class SemaphoreApp extends Homey.App {
       .register()
       .registerRunListener(async (args, state) => {
         try {
-          return await this.WaitAndLock(100, 400, this.log, this.mutex);
+          return await this.WaitAndLock(100, 50, this.log, this.mutex);
         } catch (error) {
           this.log('error while locking', error);
           return Promise.reject(error);
