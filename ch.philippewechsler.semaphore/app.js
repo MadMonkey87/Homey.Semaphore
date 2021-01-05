@@ -9,10 +9,10 @@ class SemaphoreApp extends Homey.App {
   WaitAndLock = async function (attempts, timeout, log, mutex) {
 
     async function LockAttempt() {
-      await util.sleep(100);
       if (global.isLocked === false) {
         log('locked successful');
         global.isLocked = true;
+        global.autoUnlock = setTimeout(() => { global.Unlock(log, mutex); log('forced unlock') }, 3000);
         return true;
       }
       else {
@@ -37,6 +37,9 @@ class SemaphoreApp extends Homey.App {
   Unlock = async function (log, mutex) {
 
     async function UnlockAttempt() {
+      if (global.autoUnlock) {
+        clearTimeout(global.autoUnlock);
+      }
       global.isLocked = false;
       log('unlocked');
     }
@@ -49,6 +52,7 @@ class SemaphoreApp extends Homey.App {
     this.log('SemaphoreApp has been initialized');
 
     global.isLocked = false;
+    global.Unlock = this.Unlock;
     this.mutex = new AsyncLock();
 
     let lockCondition = new Homey.FlowCardCondition('lock');
@@ -56,7 +60,7 @@ class SemaphoreApp extends Homey.App {
       .register()
       .registerRunListener(async (args, state) => {
         try {
-          return await this.WaitAndLock(60, 50, this.log, this.mutex);
+          return await this.WaitAndLock(100, 400, this.log, this.mutex);
         } catch (error) {
           this.log('error while locking', error);
           return Promise.reject(error);
