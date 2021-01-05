@@ -1,6 +1,6 @@
 {
   "id": "ch.philippewechsler.semaphore",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "compatibility": ">=4.0.0",
   "brandColor": "#14ab00",
   "sdk": 2,
