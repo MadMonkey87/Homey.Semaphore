@@ -12,7 +12,12 @@ class SemaphoreApp extends Homey.App {
       if (global.isLocked === false) {
         log('locked successful');
         global.isLocked = true;
-        global.autoUnlock = setTimeout(() => { global.Unlock(log, mutex); log('forced unlock') }, 3000);
+        global.autoUnlock = setTimeout(() => {
+          if (global.isLocked === true) {
+            global.Unlock(log, mutex);
+            log('forced unlock');
+          }
+        }, 3000);
         return true;
       }
       else {
