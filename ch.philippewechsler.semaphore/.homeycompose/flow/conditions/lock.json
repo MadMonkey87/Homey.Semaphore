@@ -1,6 +1,6 @@
 {
     "title": {
-        "en": "Wait & Lock the semaphore"
+        "en": "Wait & Lock"
     },
     "hint": {
         "en": "Waits until the semaphore is unlocked and then locks it. As soon as this was successfull the card returns 'true'. If the semaphore is locked for more than 3 seconds further attempts are canceled and this card returns 'false'."

@@ -1,11 +1,9 @@
-Introduction
-
-Concurrency is the ability to run different applications in parallel and handle ressources appropriately. Homey for example allows you to run multiple flows at once but it does not ensure that a specific resource (i.e a logic variable) is accessed only once at a time. This can be problematic and can cause so named racing conditions.
-A semaphore is a well known principle to prevent such issues as they ensure a resource is accessed only once at a time. This app provides provides such an semaphore for your Homey and enables more powerfull automations.
+Concurrency is the ability to run different applications in parallel and handle resources appropriately. Homey for example allows you to run multiple flows at once but it does not ensure that a specific resource (i.e. a logic variable) is accessed only once at a time. This can be problematic and can cause so named racing conditions.
+A semaphore is a well known principle to prevent such issues as they ensure a resource is accessed only once at a time. This app provides such an semaphore for your Homey and enables more powerful automations.
 
 Example
 
-Let's consider the following scenario: you have 3 flows that all get triggered by the same event (i.e a button press). Furthermore there is an logic variable initialized with the value of 0. Let's assume that every flow will calculate the value of the variable as +=1. As result you would expect the variable to be 3 after all the flows have completed, but in reality you will find that it has always a different value!
+Let's consider the following scenario: you have 3 flows that all get triggered by the same event (i.e. a button press). Furthermore there is an logic variable initialized with the value of 0. Let's assume that every flow will calculate the value of the variable as +=1. As result you would expect the variable to be 3 after all the flows have completed, but in reality you will find that it has always a different value!
 The reason for that is that we have a racing condition here. The operation of getting the variable, increasing it and writing it back to the memory is not atomic. Therefore it can be that multiple flows operate on the same variable at the same time. For example you would have this:
 1) flow 1 reads the variable into the memory (0)
 2) flow 2 reads the variable into the memory (0)
@@ -23,5 +21,3 @@ Now the following will happen:
 2) whenever one of the other flows comes to check the condition it will wait and not continue for the moment (usually we are talking about milliseconds here)
 3) the first flow card will do it's calculation and once this is done it will unlock the semaphore
 4) the next flow card that is waiting can now continue etc. until all work is done!
-
-
