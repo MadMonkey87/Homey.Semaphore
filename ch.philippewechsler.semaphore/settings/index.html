@@ -74,9 +74,16 @@
                     <ol>
                         <li>in the condition of the 3 flows add the 'Wait until the semaphore is unlocked' flow card
                         </li>
-                        <li>in the action of the 3 flows add the 'Unlock the semaphore' flow card after the calculation
+                        <li>the actions of the flow are now protected
+                        </li>
+                        <li>create a new flow that gets triggered when the critical operation has completed. For this
+                            case you can use the trigger 'a variable has changed' and as action you use 'Unlock the
+                            semaphore'.
                         </li>
                     </ol>
+                    <p class="card-text" style="font-style: italic;">Note: the reason for the new flow is that actions
+                        get executed in parallel, so you need to ensure that the unlocking really happens after the
+                        critical operation has completed.</p>
                     <p class="card-text">
                         Now the following will happen:
                     </p>
@@ -100,7 +107,7 @@
                 <img class="card-img-top" src="images/icon.svg"
                     style="padding-left: 15px; padding-right: 15px; padding-top: 15px;">
                 <div class="card-body">
-                    <h5 class="card-title">Semaphore for Homey v1.0.2</h5>
+                    <h5 class="card-title">Semaphore for Homey v1.0.3</h5>
                     <h3 class="card-title">© Philippe Wechsler 2021</h3>
                     <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a>
                         from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>

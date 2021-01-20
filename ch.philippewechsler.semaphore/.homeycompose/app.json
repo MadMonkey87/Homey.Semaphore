@@ -1,6 +1,6 @@
 {
   "id": "ch.philippewechsler.semaphore",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "compatibility": ">=4.0.0",
   "brandColor": "#14ab00",
   "sdk": 2,
@@ -34,5 +34,6 @@
         "username": "madmonkey87"
       }
     }
-  }
+  },
+  "homeyCommunityTopicId": 40883
 }

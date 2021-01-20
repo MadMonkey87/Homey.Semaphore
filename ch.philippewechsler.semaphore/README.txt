@@ -14,7 +14,10 @@ To prevent this behaviour we need to ensure that only one flow at the time is re
 
 To do so we need a semaphore:
 1) in the condition of the 3 flows add the 'Wait until the semaphore is unlocked' flow card
-2) in the action of the 3 flows add the 'Unlock the semaphore' flow card after the calculation
+2) the actions of the flow are now protected
+3) create a new flow that gets triggered when the critical operation has completed. For this case you can use the trigger 'a variable has changed' and as action you use 'Unlock the semaphore'.
+
+Note: the reason for the new flow is that actions get executed in parallel, so you need to ensure that the unlocking really happens after the critical operation has completed.
 
 Now the following will happen: 
 1) the first flow that checks the condition will lock the semaphore
