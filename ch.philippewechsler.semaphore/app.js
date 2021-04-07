@@ -60,9 +60,8 @@ class SemaphoreApp extends Homey.App {
     global.Unlock = this.Unlock;
     this.mutex = new AsyncLock();
 
-    let lockCondition = new Homey.FlowCardCondition('lock');
+    let lockCondition = this.homey.flow.getConditionCard('lock');
     lockCondition
-      .register()
       .registerRunListener(async (args, state) => {
         try {
           return await this.WaitAndLock(100, 50, this.log, this.mutex);
@@ -72,9 +71,8 @@ class SemaphoreApp extends Homey.App {
         }
       });
 
-    let unlockAction = new Homey.FlowCardAction('unlock');
+    let unlockAction = this.homey.flow.getActionCard('unlock');
     unlockAction
-      .register()
       .registerRunListener(async (args, state) => {
         try {
           return await this.Unlock(this.log, this.mutex);

@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "main": "app.js",
   "devDependencies": {
-    "homey": "^2.9.3"
+    "homey": "^2.14.2"
   },
   "dependencies": {
-    "async-lock": "^1.2.6"
+    "async-lock": "^1.2.8"
   }
 }

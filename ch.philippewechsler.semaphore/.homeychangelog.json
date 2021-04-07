@@ -10,5 +10,8 @@
   },
   "1.0.4": {
     "en": "improved iOS compatiblity"
+  },
+  "2.0.0": {
+    "en": "upgraded sdk to v3"
   }
 }
