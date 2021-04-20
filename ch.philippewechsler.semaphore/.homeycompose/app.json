@@ -2,7 +2,7 @@
   "id": "ch.philippewechsler.semaphore",
   "version": "2.0.0",
   "compatibility": ">=5.0.0",
-  "brandColor": "#14ab00",
+  "brandColor": "#056400",
   "sdk": 3,
   "name": {
     "en": "Semaphore"
